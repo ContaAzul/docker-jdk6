@@ -8,12 +8,13 @@ RUN echo oracle-java6-installer shared/accepted-oracle-license-v1-1 select true 
 RUN sudo apt-get install -y oracle-java6-installer
 RUN sudo update-java-alternatives -s java-6-oracle
 
-RUN wget -O /tmp/maven.tar.gz http://mirror.nbtelecom.com.br/apache/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
-RUN sudo tar xzvf /tmp/maven.tar.gz -C /opt
-RUN sudo ln -s /opt/apache-maven-3.2.5/bin/mvn /usr/bin/mvn
-RUN rm -rf /tmp/maven.tar.gz
-
-ENV M2_HOME /opt/apache-maven-3.2.5
-ENV PATH $M2_HOME/bin:$PATH
-
 RUN sudo apt-get -y install git
+
+RUN wget -O /tmp/maven.tar.gz http://mirror.nbtelecom.com.br/apache/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
+RUN sudo tar xzvf /tmp/maven.tar.gz -C /tmp
+RUN rm -rf /tmp/maven.tar.gz
+RUN sudo mv /tmp/apache-maven-3.2.5 /usr/share/maven3
+RUN sudo ln -s /usr/share/maven3/bin/mvn /usr/bin/mvn
+
+ENV M2_HOME /usr/share/maven3
+ENV PATH $M2_HOME/bin:$PATH
