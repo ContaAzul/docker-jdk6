@@ -1,5 +1,6 @@
 # Pull base image.
 FROM ubuntu:14.04
+MAINTAINER Carlos Alexandro Becker <carlos@contaazul.com>
 
 RUN sudo apt-get install -y software-properties-common
 RUN sudo add-apt-repository -y ppa:webupd8team/java
