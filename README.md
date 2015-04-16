@@ -1,6 +1,7 @@
 # [docker-jdk6](https://registry.hub.docker.com/u/caarlos0/jdk6/)
 
-Docker image with Oracle JDK6, Maven 3.2.5 and Git.
+Docker image with Oracle JDK6, Maven 3.2.5 and Git. You can use it to
+run that old project...
 
 ## Usage
 
