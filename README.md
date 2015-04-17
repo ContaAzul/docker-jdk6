@@ -5,11 +5,8 @@ run that old project...
 
 ## Usage
 
-To start a container, mapping your `~/.m2` and your java 6 project, run:
+Just run:
 
 ```bash
-docker run \
-  -v ~/.m2/:/root/.m2 \
-  -v ~/projects/my-java-6-project:/src/project \
-  -it caninjas/jdk6 sh -c 'cd /src/project; exec "/bin/bash"'
+docker run -it caninjas/jdk6 /bin/bash
 ```
