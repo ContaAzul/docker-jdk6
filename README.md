@@ -23,5 +23,5 @@ $ docker run -it caninjas/jdk8 /bin/bash
 ## Push all images
 
 ```sh
-./build push
+./build -p
 ```
