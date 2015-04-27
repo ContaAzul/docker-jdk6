@@ -9,11 +9,9 @@ RUN apt-get install -y software-properties-common && \
   apt-get update
 
 RUN apt-get install -y postgresql postgresql-contrib
+ADD pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
+RUN echo "listen_addresses = '*'" | tee -a /etc/postgresql/9.3/main/postgresql.conf
 
-ADD pg_hba.conf /etc/postgresql/9.2/main/pg_hba.conf
-
-RUN  echo "listen_addresses = '*'" | tee -a /etc/postgresql/9.*/main/postgresql.conf && \
-  service postgresql restart
 
 RUN apt-get -y install git wget
 
