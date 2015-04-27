@@ -6,10 +6,11 @@ work() {
   local tag="caninjas/jdk$version"
   sed "s/__JAVA_VERSION__/$version/g" Dockerfile.template > Dockerfile
   docker build -t "$tag" .
-  docker push "$tag"
+  [[ "${PUSH:-}" ]] && docker push "$tag"
   rm -rf Dockerfile
 }
 
-for jdk in 7 8; do
+[ "$1" = "-p" ] && export PUSH="1"
+for jdk in 6 7 8; do
   work "$jdk"
 done

@@ -12,3 +12,16 @@ $ docker run -it caninjas/jdk6 /bin/bash
 $ docker run -it caninjas/jdk7 /bin/bash
 $ docker run -it caninjas/jdk8 /bin/bash
 ```
+
+
+## Build all images
+
+```sh
+./build
+```
+
+## Push all images
+
+```sh
+./build push
+```
