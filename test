@@ -2,7 +2,8 @@
 set -eo pipefail
 
 run() {
-  docker run -t "caninjas/jdk${1}-pg" /usr/bin/mvn -version | grep "Java version"
+  docker run -e PG=false -t "caninjas/jdk${1}-pg" \
+    /usr/bin/mvn -version | grep "Java version"
 }
 
 test() {
