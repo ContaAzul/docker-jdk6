@@ -17,13 +17,15 @@ RUN wget -O /tmp/maven.tar.gz ftp://mirror.reverse.net/pub/apache/maven/maven-3/
   mv /tmp/apache-maven-3.2.5 /usr/share/maven3 && \
   ln -s /usr/share/maven3/bin/mvn /usr/bin/mvn
 
+RUN apt-get install -y java-common locales debconf gsfonts gsfonts-x11 \
+  libfontenc1 libfreetype6 libxfont1 x11-common xfonts-encodings xfonts-utils
+
 ENV M2_HOME /usr/share/maven3
 ENV PATH $M2_HOME/bin:$PATH
 
-RUN for i in 6 7 8; do echo oracle-java${i}-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-  apt-get install -y oracle-java${i}-installer; done
-
-ENV JAVA_VERSION 8
 ENV TZ "America/Sao_Paulo"
+ENV PG true
+
 COPY ./entrypoint.sh /
+COPY ./install.sh /
 ENTRYPOINT ["/entrypoint.sh"]

@@ -1,0 +1,13 @@
+#/bin/bash
+set -xeo pipefail
+
+build_base() {
+  docker build -t caninjas/jdk-pg-base Base
+}
+
+build() {
+  docker build -t "caninjas/jdk${1}-pg" "JDK$1"
+}
+
+build_base
+for i in 6 7 8; do build "$i"; done
