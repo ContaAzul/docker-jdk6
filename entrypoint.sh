@@ -1,5 +1,7 @@
 #!/bin/bash
 set -eo pipefail
+update-java-alternatives -s "java-${JAVA_VERSION}-oracle"
 service postgresql start
-update-java-alternatives -s java-${JAVA_VERSION}-oracle
+echo "$TZ" | sudo tee /etc/timezone
+dpkg-reconfigure --frontend noninteractive tzdata
 exec "$@"
