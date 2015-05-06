@@ -1,0 +1,27 @@
+#!/bin/bash
+set -eo pipefail
+
+run() {
+  docker run -e PG=false -t "caninjas/jdk${1}-pg" \
+    /usr/bin/mvn -version | grep "Java version"
+}
+
+test() {
+  echo "Testing $2's JDK$1 image..."
+  local result="$(run $1)"
+  local version_exp=".*1.$1.0.*"
+  local vendor_exp=".*$2.*"
+  if ! [[ "$result" =~ $version_exp ]]; then
+    echo "Failed while checking JDK$1. Expected '$version_exp', got '$result'."
+    exit 1
+  fi
+  if ! [[ "$result" =~ $vendor_exp ]]; then
+    echo "Failed while checking JDK$1. Expected '$vendor_exp', got '$result'."
+    exit 1
+  fi
+}
+
+test 6 "Sun"
+for version in 7 8; do test "$version" "Oracle"; done
+
+echo "Success!"
