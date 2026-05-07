@@ -8,5 +8,5 @@ run that old project...
 Just run:
 
 ```bash
-docker run -it caninjas/jdk6 /bin/bash
+docker run -it 439291037095.dkr.ecr.us-east-2.amazonaws.com/base/jdk6:latest /bin/bash
 ```
