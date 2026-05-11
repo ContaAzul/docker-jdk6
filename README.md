@@ -1,4 +1,4 @@
-# [docker-jdk6](https://r439291037095.dkr.ecr.us-east-2.amazonaws.com/microservice/base/jdk6/)
+# [docker-jdk6](https://439291037095.dkr.ecr.us-east-2.amazonaws.com/microservice/base/jdk6/)
 
 Docker image with Oracle JDK6, Maven 3.2.5 and Git. You can use it to
 run that old project...
